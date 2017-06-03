@@ -6,7 +6,6 @@
 
 <%@include file="../include/header.jsp"%>
 
-<!-- Main content -->
 <section class="content">
 	<div class="row">
 		<!-- left column -->
@@ -18,31 +17,26 @@
 					<h3 class="box-title">질문게시판</h3>
 				</div>
 				<div class="box-body">
-				
-<table class="table table-bordered">
-	<tr>
-		<th style="width: 10px">BNO</th>
-		<th>TITLE</th>
-		<th>WRITER</th>
-		<th>REGDATE</th>
-		<th style="width: 40px">VIEWCNT</th>
-	</tr>
+
+					<table class="table table-bordered">
+						<tr>
+							<th>아이디</th>
+							<th>이름</th>
+							<th>이메일</th>
+							<th>권한</th>
+						</tr>
 
 
-<c:forEach items="${list}" var="boardVO">
+						<c:forEach items="${list}" var="UserVO">
 
-	<tr>
-		<td>${boardVO.bno}</td>
-		<td><a href='/board/read?bno=${boardVO.bno}'>${boardVO.title}</a></td>
-		<td>${boardVO.writer}</td>
-		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-				value="${boardVO.regdate}" /></td>
-		<td><span class="badge bg-red">${boardVO.viewcnt }</span></td>
-	</tr>
+							<tr>
+								<td>${UserVO.uid}</td>
+								<td>${UserVO.uname}</td>
+								<td>${UserVO.email}</td>
+							</tr>
+						</c:forEach>
 
-</c:forEach>
-
-</table>
+					</table>
 
 				</div>
 				<!-- /.box-body -->
@@ -60,13 +54,11 @@
 <!-- /.content-wrapper -->
 
 <script>
-    
-    var result = '${msg}';
-    
-    if(result == 'SUCCESS'){
-    	alert("처리가 완료되었습니다.");
-    }
-    
-    </script>
+	var result = '${msg}';
+
+	if (result == 'SUCCESS') {
+		alert("처리가 완료되었습니다.");
+	}
+</script>
 
 <%@include file="../include/footer.jsp"%>

@@ -144,5 +144,12 @@ public class BoardController {
 
     model.addAttribute(service.read(bno));
   }
+  @RequestMapping(value = "/Lecture", method = RequestMethod.GET)
+ public void LectureGET(BoardVO board, Model model) throws Exception {
 
-}
+		    logger.info("Lecture get ...........");
+		  }
+  }
+
+ 
+

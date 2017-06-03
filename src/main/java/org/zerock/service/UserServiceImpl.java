@@ -1,10 +1,12 @@
 package org.zerock.service;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.zerock.domain.BoardVO;
 import org.zerock.domain.UserVO;
 import org.zerock.dto.LoginDTO;
 import org.zerock.persistence.UserDAO;
@@ -40,4 +42,13 @@ public void regist(UserVO vo) throws Exception {
 	
 	 dao.Regist(vo);
 }
+@Override
+public void modifyuser(UserVO vo) throws Exception {
+  dao.updateuser(vo);
+}
+@Override
+public List<UserVO> listAll() throws Exception {
+  return dao.listAll();
+}
+
 }

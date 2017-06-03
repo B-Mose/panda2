@@ -2,11 +2,14 @@ package org.zerock.domain;
 
 public class UserVO {
 
+  
   private String uid;
   private String upw;
   private String uname;
+  private String email;
+  private int rating;
  
-
+ 
   public String getUid() {
     return uid;
   }
@@ -30,10 +33,22 @@ public class UserVO {
   public void setUname(String uname) {
     this.uname = uname;
   }
-
+  public String getemail(){
+	  	return email;
+	  	
+  }
+  public void setemail(String email){
+	  this.email = email;
+  }
+  public int getrating(){
+	  return rating;
+  }
+  public void setrating(int rating){
+	  this.rating = rating;
+  }
   
   @Override
   public String toString() {
-    return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname  + "]";
+    return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname  + ", email=" + email + "]";
   }
 }

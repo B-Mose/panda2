@@ -3,6 +3,8 @@ package org.zerock.persistence;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import org.zerock.domain.BoardVO;
 import org.zerock.domain.UserVO;
 import org.zerock.dto.LoginDTO;
 
@@ -16,4 +18,7 @@ public interface UserDAO {
   
   public void Regist(UserVO vo)throws Exception;
 
+  public void updateuser(UserVO vo)throws Exception;
+  
+  public List<UserVO> listAll() throws Exception;
 }

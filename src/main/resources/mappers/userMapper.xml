@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="login" resultType="UserVO">
 
-		select uid, upw, uname from table_user where uid = #{uid} and upw = #{upw}
+		select uid, upw, uname, email, rating from table_user where uid = #{uid} and upw = #{upw}
 
 	</select>
 
@@ -22,11 +22,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="regist">
-		insert into table_user (uid, upw, uname)
-		values(#{uid}, #{upw}, #{uname})
+		insert into table_user (uid, upw, uname, email)
+		values(#{uid}, #{upw}, #{uname}, #{email})
 	</insert>
 
-
+	<update id="updateuser">
+	update table_user set upw =#{upw}, email =#{email}, uname =#{uname} 
+ where uid = #{uid}
+	</update>
+	
+	 <select id="listAll" resultType="org.zerock.domain.UserVO">
+ <![CDATA[
+ select 
+   uid, uname, email
+ from 
+   table_user 
+ ]]>  
+ </select>
 </mapper>
 
 

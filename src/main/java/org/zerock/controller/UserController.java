@@ -71,7 +71,7 @@ public class UserController {
   }
 
   @RequestMapping(value = "/logout", method = RequestMethod.GET)
-  public void logout(HttpServletRequest request, 
+  public String logout(HttpServletRequest request, 
       HttpServletResponse response, HttpSession session) throws Exception {
 
     Object obj = session.getAttribute("login");
@@ -91,6 +91,7 @@ public class UserController {
         service.keepLogin(vo.getUid(), session.getId(), new Date());
       }
     }
+    return "user/logout";
   }
   @RequestMapping(value = "/UserRg", method = RequestMethod.GET)
   public void UserRgGET(UserVO vo, Model model)throws Exception{
@@ -107,5 +108,25 @@ public class UserController {
 	    logger.info("regist post ...........");
 	  
 	  }
- 
+  @RequestMapping(value = "/modifyuser", method = RequestMethod.GET)
+  public void modifyuserGET(UserVO vo, Model model) throws Exception {
+
+    logger.info("usermodiy get ...........");
+  } 
+  @RequestMapping(value = "/modifyuser", method = RequestMethod.POST)
+  public String modifyPOST(UserVO vo, RedirectAttributes rttr) throws Exception {
+
+    logger.info("moduser post............");
+
+    service.modifyuser(vo);
+    rttr.addFlashAttribute("msg", "SUCCESS");
+
+    return "redirect:/";
+  }
+  @RequestMapping(value = "/userlist", method = RequestMethod.GET)
+  public void listAll(Model model) throws Exception {
+
+    logger.info("show all  userlist......................");
+    model.addAttribute("list", service.listAll());
+  }
 }
